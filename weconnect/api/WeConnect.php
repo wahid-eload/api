@@ -14,7 +14,7 @@ class WeConnect {
 
   public function getRaw () {return $this->self['raw'];}
 
-  public function request($name, &$post=array(), $detail=0, $test=0)
+  public function request($name, $post=array(), $detail=0, $test=0)
   {
     $this->self['raw'] = '';
     $post['request']   = $name;
