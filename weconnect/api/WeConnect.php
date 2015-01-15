@@ -14,9 +14,14 @@ class WeConnect {
 
   public function getRaw () {return $this->self['raw'];}
 
-  public function request($name, $post=array(), $detail=0, $test=0)
+  public function request($name, &$post=array(), $detail=0, $test=0)
   {
     $this->self['raw'] = '';
+    if (isset($post['command']))
+    {
+      $name=$post['command'];
+      unset($post['command']);
+    }
     $post['request']   = $name;
     $post['detail']    = $detail;
     $post['test']      = $test;
@@ -28,13 +33,13 @@ class WeConnect {
   {
     include $this->self['dir']."settings.php";
     $uri          = "secure";
-    $post['user'] = $weconnect_user;
     $post['pin']  = $weconnect_pin;
     $this->self['cookies'] = '';
     if (! $weconnect_use_cert)
     {
+      $post['user']  = $weconnect_user;
       $uri           = "api";
-      $res           = new SimpleXMLElement($this->use_curl("https://${weconenct_host}/${uri}/token.php?user=".$post['user'], $post, $weconnect_ssl_ca, $weconnect_use_cert));
+      $res           = new SimpleXMLElement($this->use_curl("https://${weconenct_host}/${uri}/token.php?user=${weconnect_user}", $post, $weconnect_ssl_ca, $weconnect_use_cert));
       $token         = "";
       if (isset($res->token)){$token = $res->token[0]['value'];}
       $str_keys      = "apikey=${weconnect_apikey};token=${token}";
@@ -43,7 +48,7 @@ class WeConnect {
       foreach ($keys as $k){$str_keys="${str_keys};${k}=".$post[$k];}
       $post['signature']=md5($str_keys);
     }
-    $url      = "https://${weconenct_host}/${uri}/?request=".$post['request']."&user=".$post['user'];
+    $url      = "https://${weconenct_host}/${uri}/?request=".$post['request']."&user=${weconnect_user}";
     $res      = $this->use_curl($url, $post, $weconnect_ssl_ca, $weconnect_use_cert);
     if ($this->self['debug']){print "$res";}
     $this->self['raw'] = $res;
