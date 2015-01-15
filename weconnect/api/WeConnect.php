@@ -17,11 +17,6 @@ class WeConnect {
   public function request($name, &$post=array(), $detail=0, $test=0)
   {
     $this->self['raw'] = '';
-    if (isset($post['command']))
-    {
-      $name=$post['command'];
-      unset($post['command']);
-    }
     $post['request']   = $name;
     $post['detail']    = $detail;
     $post['test']      = $test;
