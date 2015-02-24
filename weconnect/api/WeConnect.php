@@ -34,7 +34,7 @@ class WeConnect {
     {
       $post['user']  = $weconnect_user;
       $uri           = "api";
-      $res           = new SimpleXMLElement($this->use_curl("https://${weconenct_host}/${uri}/token.php?user=${weconnect_user}", $post));
+      $res           = new SimpleXMLElement($this->use_curl("https://${weconenct_host}/${uri}/token.php?user=${weconnect_user}", $post, $weconnect_use_cert));
       $token         = "";
       if (isset($res->token)){$token = $res->token[0]['value'];}
       $str_keys      = "apikey=${weconnect_apikey};token=${token}";
@@ -44,13 +44,13 @@ class WeConnect {
       $post['signature']=md5($str_keys);
     }
     $url      = "https://${weconenct_host}/${uri}/?request=".$post['request']."&user=${weconnect_user}";
-    $res      = $this->use_curl($url, $post);
+    $res      = $this->use_curl($url, $post, $weconnect_use_cert);
     if ($this->self['debug']){print "$res";}
     $this->self['raw'] = $res;
     return new SimpleXMLElement($res);
   }
 
-  private function use_curl($url, $post)
+  private function use_curl($url, $post, $weconnect_use_cert)
   {
     include $this->self['dir']."curl-settings.php";
     $str_post = '';
@@ -90,7 +90,7 @@ class WeConnect {
 
   private function local_error($code, $msg)
   {
-    return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<response>\n  <error value=\"$msg\" code=\"$code\"/>\n<status  value=\"Local Communication Error\" code=\"9998\"/></response>\n";
+    return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<response>\n  <error value=\"$msg\" code=\"$code\"/>\n  <status  value=\"Local Communication Error\" code=\"9998\"/>\n</response>\n";
   }
 }
 ?>
