@@ -4,7 +4,6 @@
   $weconnect_pin      = 'FIXME_WAHID_PIN';
   $weconnect_apikey   = 'FIXME_APIKEY';
 
-  $weconnect_use_cert = False;
+  $weconnect_use_cert = false;
   $weconenct_host     = 'www.weconnect.com.pk';
-  $weconnect_ssl_ca   = 'CA-cert.pem';
 ?>
