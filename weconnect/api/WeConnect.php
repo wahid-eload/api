@@ -31,9 +31,6 @@ class WeConnect {
     $uri           = "api/v2";
     $token         = md5(microtime());
     $str_keys      = "apikey=${weconnect_apikey};token=${token}";
-    $keys          = array_keys($post);
-    sort($keys);
-    foreach ($keys as $k){$str_keys="${str_keys};${k}=".$post[$k];}
     $url     = "https://${weconenct_host}/${uri}/?request=".$post['request']."&user=${weconnect_user}";
     $headers = array("Authorization: ".md5($str_keys), "WahidToken: $token");
     $res = $this->use_curl($url, $post, $headers);
