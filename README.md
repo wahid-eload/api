@@ -11,7 +11,7 @@ All Requests need to POST following required parameters along with any paramemte
 | request  | request number e.g 1 |
 | pin      | your 4 to 6 digit Wahid PIN e.g 012345 |
 
-For authentication, you need to Include Following headers in your HTTPS request
+For authentication, you need to include following headers in your HTTPS request
 
 | Header | Value
 |:-----:|:--------|
