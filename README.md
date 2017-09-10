@@ -3,7 +3,7 @@ This php client version 2 (and above) implements the following Wahid eLoad API. 
 
 # Wahid eLoad API
 All Wahid eLoad API access is over HTTPS, and accessed from the https://www.weconnect.com.pk/api/v2 
-All Requests need to POST follow required parameters along with any paramemters needed for request
+All Requests need to POST following required parameters along with any paramemters needed for request
 
 | Parameter | Value |
 |:--------:|:---------------:|
