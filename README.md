@@ -30,13 +30,13 @@ Now to make API request using curl client we can do the following
 
 ## Pre-paid load request
 ### Request pre-paid Mobilink load of Rs 100 for number 3007654321
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=1&number=3007654321&compnay=30&amount=100' 'https://www.weconnect.com.pk/api/v2'```
+```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=1&number=3007654321&compnay=30&amount=100' 'https://www.weconnect.com.pk/api/v2'```
 
 ### Request post-paid Telenor load of Rs 1000 for number 3127654321
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=9&number=3127654321&compnay=34&amount=1000' 'https://www.weconnect.com.pk/api/v2'```
+```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=9&number=3127654321&compnay=34&amount=1000' 'https://www.weconnect.com.pk/api/v2'```
 
 ### Request Ufone SuperCard599 for number 3301234567
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=8&rtype=4&number=3301234567&compnay=33' 'https://www.weconnect.com.pk/api/v2'```
+```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=4&amount=599&number=3301234567&compnay=33' 'https://www.weconnect.com.pk/api/v2'```
 
 All the Wahid eLoad requests, their required parameters and company codes are defined here http://weconnect.com.pk/apicodes
 
