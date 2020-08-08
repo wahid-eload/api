@@ -21,22 +21,20 @@ For authentication, you need to include following headers in your HTTPS request
 # Example
 Lets assume your register number is ```3001234567```, your Wahid PIN is ```012345``` and API key is ```abcdef1234567890```. For each request we need to have unique ```WahidToken```. Easiest is to use the EPOCH time ( https://www.epochconverter.com/ ). Lets assume current EPOCH time is 1500928932 so our ```WahidToken``` will be *md5(1500928932)=*```4c65f3d505f44512900ed14cae71b2da``` and our ```Authorization``` is *md5(apikey=abcdef1234567890;token=4c65f3d505f44512900ed14cae71b2da)*=```6d9dc22ec4feebfe37dcfb1d87f1cccf```
 
-You also need to download https://github.com/wahid-eload/api/blob/master/weconnect/api/CA-cert.pem 
-
 Now to make API request using curl client we can do the following
 
 ## Balance Checking
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2' 'https://www.weconnect.com.pk/api/v2'```
+```curl -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2' 'https://www.weconnect.com.pk/api/v2'```
 
 ## Pre-paid load request
 ### Request pre-paid Mobilink load of Rs 100 for number 3007654321
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=1&number=3007654321&compnay=30&amount=100' 'https://www.weconnect.com.pk/api/v2'```
+```curl -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=1&number=3007654321&compnay=30&amount=100' 'https://www.weconnect.com.pk/api/v2'```
 
 ### Request post-paid Telenor load of Rs 1000 for number 3127654321
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=9&number=3127654321&compnay=34&amount=1000' 'https://www.weconnect.com.pk/api/v2'```
+```curl -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=9&number=3127654321&compnay=34&amount=1000' 'https://www.weconnect.com.pk/api/v2'```
 
 ### Request Ufone SuperCard599 for number 3301234567
-```curl --cacert CA-cert.pem -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=4&amount=599&number=3301234567&compnay=33' 'https://www.weconnect.com.pk/api/v2'```
+```curl -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2&mtype=4&amount=599&number=3301234567&compnay=33' 'https://www.weconnect.com.pk/api/v2'```
 
 All the Wahid eLoad requests, their required parameters and company codes are defined here http://weconnect.com.pk/apicodes
 
