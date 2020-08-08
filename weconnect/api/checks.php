@@ -7,7 +7,7 @@
   else
   {
     print "FAIL\n";
-    print "Please install php5-curl. On Ubuntu, you can install it by running the following commands as root.\n";
+    print "Please install php5-curl. On Ubuntu, you can install it by running the following commands.\n";
     print "sudo apt-get install php5-curl\nsudo service apache2 restart";
     $err=1;
   }
@@ -18,7 +18,7 @@
   else
   {
     print "FAIL\n";
-    print "Please install php5-cli. On Ubuntu, you can install it by running the following commands as root.\n";
+    print "Please install php5-cli. On Ubuntu, you can install it by running the following commands.\n";
     $err=1;
   }
   exit ($err)
