@@ -113,9 +113,11 @@ public class Program
   public static void Main()
   {
     Dictionary<string, string> data = new Dictionary<string, string>();
+    // Get balance
     data.Add("request", "35");
     WeConenct(data);
     data.Clear();
+    // Easy load request of 100 Rs for number 3007654321 which belongs to company Jazz (30).
     data.Add("request","2");
     data.Add("number", "3007654321");
     data.Add("amount","100");
