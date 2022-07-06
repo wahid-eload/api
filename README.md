@@ -65,3 +65,63 @@ In case of success, ```status``` value is set to ```success``` (code=1) and in c
   <status  value="error" code="0"/>
 </response>
 ```
+
+# Example C# CSharpe
+```
+using System;
+using RestSharp;
+using System.Collections.Generic;
+					
+public class Program
+{
+  public static string CreateMD5(string input)
+  {
+    using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+    {
+      byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+      byte[] hashBytes = md5.ComputeHash(inputBytes);
+      System.Text.StringBuilder sb = new System.Text.StringBuilder();
+      for (int i = 0; i < hashBytes.Length; i++){sb.Append(hashBytes[i].ToString("x2"));}
+      return sb.ToString();
+    }
+  }
+  public static string WeConenct(Dictionary<string, string> data)
+  {
+    var user = "3001234567";
+    var pin = "012345";
+    TimeSpan t = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    var token = t.TotalSeconds.ToString();
+    var apikey="abcdef1234567890";		
+    var WahidToken = CreateMD5(token);
+    var Authorization = CreateMD5("apikey="+ apikey + ";token="+WahidToken);
+    var client = new RestClient("https://www.weconnect.com.pk/api/v2.php");
+    client.Timeout = 100000;
+    var request = new RestRequest(Method.POST);
+    request.AddHeader("Authorization", Authorization);
+    request.AddHeader("WahidToken", WahidToken);
+    request.AddParameter("user",     user, ParameterType.GetOrPost);
+    request.AddParameter("pin",      pin,     ParameterType.GetOrPost);
+    foreach( KeyValuePair<string, string> item in data )
+    {
+      request.AddParameter(item.Key,  item.Value, ParameterType.GetOrPost);
+    }
+    IRestResponse response = client.Execute(request);
+    Console.WriteLine(response.Content);
+    return response.Content;
+  }
+
+  public static void Main()
+  {
+    Dictionary<string, string> data = new Dictionary<string, string>();
+    data.Add("request", "35");
+    WeConenct(data);
+    data.Clear();
+    data.Add("request","2");
+    data.Add("number", "3007654321");
+    data.Add("amount","100");
+    data.Add("company","30");
+    data.Add("mtype","1");
+    WeConenct(data);
+  }
+}
+```
