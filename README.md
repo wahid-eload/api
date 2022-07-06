@@ -95,7 +95,7 @@ public class Program
     var WahidToken = CreateMD5(token);
     var Authorization = CreateMD5("apikey="+ apikey + ";token="+WahidToken);
     var client = new RestClient("https://www.weconnect.com.pk/api/v2.php");
-    client.Timeout = 100000;
+    client.Timeout = 120000; //120 sec
     var request = new RestRequest(Method.POST);
     request.AddHeader("Authorization", Authorization);
     request.AddHeader("WahidToken", WahidToken);
