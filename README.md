@@ -24,7 +24,7 @@ Lets assume your register number is ```3001234567```, your Wahid PIN is ```01234
 Now to make API request using curl client we can do the following
 
 ## Balance Checking
-```curl -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=2' 'https://www.weconnect.com.pk/api/v2'```
+```curl -H 'Authorization: 6d9dc22ec4feebfe37dcfb1d87f1cccf' -H 'WahidToken: 4c65f3d505f44512900ed14cae71b2da' --data 'user=3001234567&pin=012345&request=35' 'https://www.weconnect.com.pk/api/v2'```
 
 ## Pre-paid load request
 ### Request pre-paid Mobilink load of Rs 100 for number 3007654321
