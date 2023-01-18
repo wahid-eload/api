@@ -87,11 +87,11 @@ public class Program
   }
   public static string WeConenct(Dictionary<string, string> data)
   {
-    var user = "3001234567";
-    var pin = "012345";
+    var user = "3001234567"; //Or read it from some configuration file
+    var pin = "012345";      //Or read it from some configuration file
     TimeSpan t = DateTime.UtcNow - new DateTime(1970, 1, 1);
     var token = t.TotalSeconds.ToString();
-    var apikey="abcdef1234567890";		
+    var apikey="abcdef1234567890";  //Or read it from some configuration file		
     var WahidToken = CreateMD5(token);
     var Authorization = CreateMD5("apikey="+ apikey + ";token="+WahidToken);
     var client = new RestClient("https://www.weconnect.com.pk/api/v2.php");
